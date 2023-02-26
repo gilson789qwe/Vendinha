@@ -1,6 +1,8 @@
+using Api.Data;
 using Api.Models;
 using Api.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api.Controllers;
 
@@ -16,10 +18,31 @@ public class UserController : Controller
     }
     
     [HttpGet]
-    public async Task<ActionResult<List<UserModel>>> FindAll()
+    public async Task<ActionResult<List<UserModel>>> FindAll(
+        [FromServices] SystemTaskDBContex contex,
+        [FromQuery]int page = 0,
+        [FromQuery]int linesPerPage = 10
+    )
     {
-        List<UserModel> users = await _userRepository.FindAll();
-        return Ok(users);
+        if (page != 1)
+        {
+            page = (page-1) * 10;
+        }
+        else
+        {
+            page = 0;
+        }
+        var users = await contex.Users.AsNoTracking()
+            .Skip(page)
+            .Take(linesPerPage)
+            .ToListAsync();
+        
+        List<UserModel> usersId = await _userRepository.FindAll();
+        
+        int totalElement;
+        totalElement = usersId.Count();
+        
+        return Ok(Json(users,totalElement));
     }
     
     [HttpGet("{id}")]

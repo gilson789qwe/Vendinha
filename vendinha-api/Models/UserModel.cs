@@ -15,4 +15,6 @@ public class UserModel
     
     public string Email { get; set; }
     
+    public int Idade { get; set; }
+    
 }

@@ -1,5 +1,6 @@
 using Api.Models;
 using Api.Repositories.Interfaces;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers;
@@ -16,6 +17,7 @@ public class DebtController : Controller
         _debtRepository = debtRepository;
     }
     
+    [EnableCors("AnotherPolicy")]
     [HttpGet]
     public async Task<ActionResult<List<DebtModel>>> FindAll()
     {

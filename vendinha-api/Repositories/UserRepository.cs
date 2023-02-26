@@ -33,6 +33,19 @@ public class UserRepository : IUserRepository
         {
             throw new Exception($"O valor de CPF tem q ter 11 digidos");
         }
+
+        string year = user.DataNascimento.Year.ToString();
+        string yearNow = DateTime.Now.Year.ToString();
+        string mouth = user.DataNascimento.Month.ToString();
+        string mouthNow = DateTime.Now.Year.ToString();
+        int idade = Convert.ToInt32(mouthNow) - Convert.ToInt32(mouth);
+
+        if (idade >= 0)user.Idade = (Convert.ToInt32(yearNow) - Convert.ToInt32(year))-1;
+        else
+        {
+            user.Idade = Convert.ToInt32(yearNow) - Convert.ToInt32(year);
+        }
+        
         await _dbContex.Users.AddAsync(user);
         _dbContex.SaveChangesAsync();
 
