@@ -20,6 +20,7 @@ public class SystemTaskDBContex : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new UserMap());
+        modelBuilder.ApplyConfiguration(new DebtMap());
         base.OnModelCreating(modelBuilder);
     }
 

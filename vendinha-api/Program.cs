@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Api.Data;
 using Api.Repositories;
 using Api.Repositories.Interfaces;
@@ -16,18 +17,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddEntityFrameworkNpgsql()
     .AddDbContext<SystemTaskDBContex>(
         options => options.UseNpgsql(builder.Configuration.GetConnectionString("DataBase"))
-    );
-
-/*services.AddDbContext<CoreDbContext>((options) =>
-    options.UseSqlServer(connectionString,
-        sqlServerOptionsAction: sqlOptions =>*/
-
-/*builder.Services.AddDbContext<SystemTaskDBContex>(
-    options => options.UseNpgsql(builder.Configuration.GetConnectionString("DataBase"))
-);*/
-
+    ).AddScoped<SystemTaskDBContex, SystemTaskDBContex>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+builder.Services.AddScoped<IDebtRepository, DebtRepository>();
+
+builder.Services.AddControllers().AddJsonOptions(x =>
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 var app = builder.Build();
 

@@ -12,7 +12,9 @@ public class DebtModel
     
     public DateTime DataCriacao { get; set; }
     
-    public DateTime DataPagamento { get; set; }
+    public DateTime? DataPagamento { get; set; }
 
-    public UserModel User { get; set; }
+  
+    public int UserId { get; set; }
+    
 }

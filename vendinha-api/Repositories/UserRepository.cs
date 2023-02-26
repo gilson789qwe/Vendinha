@@ -1,3 +1,5 @@
+using System.Data;
+using System.Text.Json;
 using Api.Data;
 using Api.Models;
 using Api.Repositories.Interfaces;
@@ -14,7 +16,10 @@ public class UserRepository : IUserRepository
     }
     public async Task<List<UserModel>> FindAll()
     {
-        return await _dbContex.Users.ToListAsync();
+        List<UserModel> users = await _dbContex.Users.ToListAsync();
+        
+        return users;
+
     }
 
     public async Task<UserModel> FindAllBy(int id)
@@ -24,6 +29,10 @@ public class UserRepository : IUserRepository
 
     public async Task<UserModel> Created(UserModel user)
     {
+        if (user.CPF.Length != 11)
+        {
+            throw new Exception($"O valor de CPF tem q ter 11 digidos");
+        }
         await _dbContex.Users.AddAsync(user);
         _dbContex.SaveChangesAsync();
 
