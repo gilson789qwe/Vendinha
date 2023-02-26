@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "vendinha-frontend": {
+    "vendinha": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/vendinha-frontend",
+            "outputPath": "dist/vendinha",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -30,7 +30,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles/icons/primeicons.css",
+              "src/styles/theme.css",
+              "src/styles/resources/primeng.min.css"
             ],
             "scripts": []
           },
@@ -65,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "vendinha-frontend:build:production"
+              "browserTarget": "vendinha:build:production"
             },
             "development": {
-              "browserTarget": "vendinha-frontend:build:development"
+              "browserTarget": "vendinha:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "vendinha-frontend:build"
+            "browserTarget": "vendinha:build"
           }
         },
         "test": {
@@ -100,5 +102,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "316b3318-dd6c-4fee-a16b-c514dc4f6077"
   }
 }
