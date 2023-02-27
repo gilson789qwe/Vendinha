@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'users',
+    redirectTo: 'customers',
     pathMatch: 'full',
     data: { title: 'Usuários'}
   },
@@ -13,8 +13,8 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'users',
-        loadChildren: () => import('../app/modules/users/users.module').then((m) => m.UsersModule),
+        path: 'customers',
+        loadChildren: () => import('../app/modules/customers/customers.module').then((m) => m.CustomersModule),
         data: { title: 'Usuários' },
 
       }

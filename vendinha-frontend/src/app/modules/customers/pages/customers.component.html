@@ -1,0 +1,47 @@
+<header>
+  <h1>Vendinha</h1>
+</header>
+<nav>
+    <div class="card" *ngIf="!isLoading">
+        <p-table [value]="customers" [tableStyle]="{'min-width': '50rem'}">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Valor Total</th>
+                    <th>Dívida</th>
+                    <th style="width: 5rem"></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user>
+                <tr *ngIf="!isLoading">
+                    <td>{{user.id}}</td>
+                    <td>{{user.nome}}</td>
+                    <td>R$ {{(user.valorTotal/100).toFixed(2)}}</td>
+                    <td>{{user.situacao?"Fechada":"Aberta"}}</td>
+                    <td>
+                        <button type="button" pButton pRipple icon="pi pi-search" (click)="selectUser(user)"></button>
+                    </td>
+                </tr>
+             </ng-template>
+        </p-table>
+    </div>
+    <div class="s-card no-margin p-grid p-mt-2" *ngIf="!isLoading && isPaginate()">
+      <div class="p-col">
+        mostrando {{paginate.page+1}} à {{currentPage}} de {{paginate.total}} registros
+      </div>
+      <div class="p-col p-text-right">
+        <button pButton label="Primeiro" (click)="loadPage('first')" [disabled]="isFirstPage()" type="button"
+          icon="pi pi-angle-double-left" class="p-button-text"></button>
+        <button pButton label="Anterior" (click)="loadPage('prev')" [disabled]="isFirstPage()" type="button"
+          icon="pi pi-angle-left" class="p-button-text"></button>
+        <button pButton label="Próximo" (click)="loadPage('next')" [disabled]="isLastPage()" type="button"
+          icon="pi pi-angle-right" class="p-button-text"></button>
+        <button pButton label="Último" (click)="loadPage('last')" [disabled]="isLastPage()" type="button"
+          icon="pi pi-angle-double-right" class="p-button-text"></button>
+      </div>
+    </div>
+</nav>
+<footer>
+  
+</footer>

@@ -290,7 +290,7 @@
 - Add "user remove" icon [\#13](https://github.com/primefaces/primeicons/issues/13)
 - Add "user add" icon [\#12](https://github.com/primefaces/primeicons/issues/12)
 - Add "paperclip" icon [\#9](https://github.com/primefaces/primeicons/issues/9)
-- Add "users" icon [\#8](https://github.com/primefaces/primeicons/issues/8)
+- Add "customers" icon [\#8](https://github.com/primefaces/primeicons/issues/8)
 - Add "external-link" icon [\#4](https://github.com/primefaces/primeicons/issues/4)
 - Add "user" icon [\#2](https://github.com/primefaces/primeicons/issues/2)
 - Add "refresh" icon [\#1](https://github.com/primefaces/primeicons/issues/1)
