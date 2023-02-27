@@ -34,6 +34,10 @@
       <Compile Remove="Models\User.cs" />
       <Compile Remove="Controllers\WeatherForecastController.cs" />
       <Compile Remove="WeatherForecast.cs" />
+      <Compile Remove="Repositories\Interfaces\ICustomerDebtModel.cs" />
+      <Compile Remove="Repositories\CustomerDebt.cs" />
+      <Compile Remove="Repositories\PaginationParams.cs" />
+      <Compile Remove="Repositories\Interfaces\CustomerDebtRepository.cs" />
     </ItemGroup>
 
     <ItemGroup>

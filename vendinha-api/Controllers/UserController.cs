@@ -56,7 +56,6 @@ public class UserController : Controller
     public async Task<ActionResult<UserModel>> Created([FromBody] UserModel userModel)
     {
         UserModel user = await _userRepository.Created(userModel);
-        
         return Ok(user);
     }
 

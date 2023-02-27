@@ -46,6 +46,14 @@ public class UserRepository : IUserRepository
             user.Idade = Convert.ToInt32(yearNow) - Convert.ToInt32(year);
         }
         
+        List<UserModel> usersId  = await _dbContex.Users.ToListAsync();
+
+        Boolean cpf = usersId.Any(u => u.CPF == user.CPF);
+        if (cpf)
+        {
+            throw new Exception($"CPF já está cadastrado");
+        }
+        
         await _dbContex.Users.AddAsync(user);
         _dbContex.SaveChangesAsync();
 
